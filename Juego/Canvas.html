@@ -1,0 +1,98 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Ejemplo de página HTML</title>
+      <script type="text/javascript" charset="utf-8">
+          function pageLoaded(){
+              var canvas = document.getElementById('testcanvas');
+              var context= canvas.getContext('2d');
+              
+              //Rectángulos rellenos
+              //Dibujar un cuadrado sólido con ancho y alto de 100 píxeles (200 pixeles de la derecha ,10 pixeles de arriba)
+              context.fillRect(200,10,100,100);
+              //Dibujar un cuadrado sólido con ancho de 90 y alto 30 píxeles (50,70)
+              context.fillRect(50,70,90,30);
+              
+              //Contornos rectangulares
+              //Dibujar un contorno rectangular de ancho y alto de 50 píxeles (110,10)
+              context.strokeRect(110,10,50,50);
+              //Dibujar un contorno rectangular de ancho y alto de 50 píxeles (110,10)
+              context.strokeRect(30,10,50,50);
+              
+              //Otros rectángulos
+              //Rectángulo de 30 píxeles de ancho y 20 de alto (210,20)
+              context.clearRect(210,20,30,20);
+              //Rectángulo de 30 píxeles de ancho y 20 de alto (260,20)
+              context.clearRect(260,20,30,20);
+              
+              //Dibujar formas complejas
+              //Triángulos relleno
+              context.beginPath();
+              context.moveTo(10,120);
+              context.lineTo(10,180);
+              context.lineTo(110,150);
+              context.fill();
+              
+              //Triángulos sin relleno
+              context.beginPath();
+              context.moveTo(140,160);
+              context.lineTo(140,220);
+              context.lineTo(40,190);
+              context.closePath();
+              context.stroke();
+              
+              //Líneas complejas
+              context.beginPath();
+              context.moveTo(160,160);
+              context.lineTo(170,220);
+              context.lineTo(240,210);
+              context.lineTo(260,170);
+              context.lineTo(190,140);
+              context.closePath();
+              context.stroke();
+              
+              //Semicirculos
+              context.beginPath();
+              
+              //Dibujar arco
+              context.arc(100,300,40,0,Math.PI,true);
+              context.stroke();
+              
+              //Dibujar círculo completo
+              context.beginPath();
+              context.arc(200,300,40,0,2*Math.PI,true);
+              context.fill();
+              
+              //Dibujar texto
+              context.fillText('This is some text...', 330,60);
+              
+              //Dibujar con colores
+              context.fillStyle="red";
+              context.fillRect(310,160,100,50);
+              
+              //Imagen
+              var image = document.getElementById('spaceship');
+              context.drawImage(image,0,350);
+              context.drawImage(image,0,400,100,25);
+              
+              //Trasladar
+              context.translate(250,370);
+              
+              //Girar
+              context.rotate(Math.PI/3);
+              context.drawImage(image,0,0,60,50,-30,-25,60,50);
+              
+              context.translate(300,370);
+              context.rotate(3*Math.PI/4);
+              context.drawImage(image,0,0,60,50,-30,-25,50);
+              
+          }       
+  </script>
+  </head>
+  <body onload="pageLoaded();">
+    <canvas width="600" height="400" id="testcanvas" style="border:1px solid black;">
+      Tu navegador no soporta Canvas de HTML5. Por favor, utiliza otro navegador.
+              <img src="spaceship.png" width="200" height="50" alt="Spaceship" id="spaceship">
+    </canvas>
+  </body>
+</html>
